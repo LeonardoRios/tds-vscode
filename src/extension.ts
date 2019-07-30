@@ -410,7 +410,6 @@ function verifyEncoding() {
 
 
 
-
 interface IAdvplSymbol {
     /**
      * Nome do Símbolo - Será exibido na outline
@@ -507,7 +506,7 @@ class AdvplSymbolsProvider implements vscode.DocumentSymbolProvider {
         return new Promise((resolve, reject) => {
 
             let symbols: vscode.DocumentSymbol[] = [];
-            let advplSymbols = [];
+            let advplSymbols;
 
             // Percorre o arquivo para encontrar os simbolos Advpl
             for (let i = 0; i < document.lineCount; i++) {
@@ -557,7 +556,7 @@ class AdvplSymbolsProvider implements vscode.DocumentSymbolProvider {
 						new AdvplSymbol(
 							line.text,
 							"WSDL WebService Function AdvPL",
-							LevelType.WSFunction,
+							LevelType.WsFunction,
 							vscode.SymbolKind.Function,
 							line.range,
 							line.range
@@ -570,7 +569,7 @@ class AdvplSymbolsProvider implements vscode.DocumentSymbolProvider {
 						new AdvplSymbol(
 							line.text,
 							"Restful WebService Function AdvPL",
-							LevelType.WSRestfulFunction,
+							LevelType.WsRestfulFunction,
 							vscode.SymbolKind.Function,
 							line.range,
 							line.range
@@ -583,7 +582,7 @@ class AdvplSymbolsProvider implements vscode.DocumentSymbolProvider {
 						new AdvplSymbol(
 							line.text,
 							"WebService Method AdvPL",
-							LevelType.WSMethodFunction,
+							LevelType.WsMethodFunction,
 							vscode.SymbolKind.Function,
 							line.range,
 							line.range
@@ -661,7 +660,7 @@ class AdvplSymbolsProvider implements vscode.DocumentSymbolProvider {
 						new AdvplSymbol(
 							line.text,
 							"WebService Method Declaration AdvPL",
-							LevelType.WSMethodDeclaration,
+							LevelType.WsMethodDeclaration,
 							vscode.SymbolKind.Variable,
 							line.range,
 							line.range
@@ -700,4 +699,3 @@ class AdvplSymbolsProvider implements vscode.DocumentSymbolProvider {
 		});
     }
 }
-
